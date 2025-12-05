@@ -8,6 +8,7 @@ use Modules\Product\app\Http\Controllers\GalleryImageController;
 use Modules\Product\app\Http\Controllers\ProductCategoryController;
 use Modules\Product\app\Http\Controllers\ProductController;
 use Modules\Product\app\Http\Controllers\ProductLabelController;
+use Modules\Product\app\Http\Controllers\ProductMarketingController;
 use Modules\Product\app\Http\Controllers\ProductReviewController;
 use Modules\Product\app\Http\Controllers\SellerProductController;
 use Modules\Product\app\Http\Controllers\TagController;
@@ -36,6 +37,8 @@ Route::name('admin.')
         Route::get('product/get/{id}', [ProductController::class, 'getProductJson'])->name('product.json');
         Route::post('product/delete', [ProductController::class, 'bulkDelete'])->name('product.bulk.delete');
         Route::resource('product', ProductController::class);
+
+        Route::get('product/marketing-details/{id}', [ProductMarketingController::class, 'marketingDetails'])->name('product.marketing-details');
 
         Route::get('sellers/products', [SellerProductController::class, 'index'])->name('seller.products.index');
 

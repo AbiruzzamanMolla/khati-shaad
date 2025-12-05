@@ -28,7 +28,7 @@
                             <h2>{{ __('Sign Up') }}<span>!</span></h2>
                             <p>{{ __('Already have an account') }}? <a
                                     href="{{ route('login') }}">{{ __('Log in') }}</a></p>
-                            <form action="{{ route('register') }}" method="POST">
+                            <form action="{{ route('register.store') }}" method="POST">
                                 @csrf
 
                                 <div class="wsus__login_input">

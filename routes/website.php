@@ -23,6 +23,7 @@ Route::middleware(['translation', 'maintenance.mode'])->group(
             Route::get('/categories', 'categories')->name('categories');
             Route::get('/products', 'products')->name('products');
             Route::get('/products/{product:slug}', 'product')->name('product');
+            Route::get('/products-details/{product:slug}', 'productMarketingDetails')->name('product.marketing-details');
             Route::get('/product-modal', 'productModal')->name('product-modal');
             Route::get('/flash-deals', 'flashDeals')->name('flash.deals');
             Route::get('/brands', 'brands')->name('brands');

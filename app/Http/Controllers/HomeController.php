@@ -640,6 +640,87 @@ class HomeController extends Controller
         return view('website.product', compact('product', 'sections', 'relatedProducts'));
     }
 
+
+    public function productMarketingDetails($slug)
+    {
+        $product = Product::with([
+            'variants',
+            'variantImage' => [
+                'attribute',
+                'attributeValue',
+            ],
+            'categories'   => function ($q) {
+                $q->with('translation');
+            },
+            'brand'        => function ($q) {
+                $q->with('translation');
+            },
+            'translation',
+            'vendor'       => function ($q) {
+                $q->withCount('reviews')->withAvg('reviews', 'rating');
+            },
+            'variants'     => [
+                'options' => [
+                    'attribute',
+                    'attributeValue.translation',
+                ],
+            ],
+            'reviews'      => function ($q) {
+                $q->where('status', 1)
+                    ->with('user')
+                    ->latest()
+                    ->take(10);
+            },
+        ])
+            ->where('slug', $slug)->published()->firstOrFail();
+
+        $product->increment('viewed');
+
+        $relatedProducts = Product::with(['labels', 'categories'])
+            ->where('id', '!=', $product->id)
+            ->where(function ($query) use ($product) {
+                $query->where('brand_id', $product->brand_id)
+                    ->orWhere('vendor_id', $product->vendor_id)
+                    ->orWhereHas('labels', function ($q) use ($product) {
+                        $q->whereIn('product_labels.id', $product->labels->pluck('id'));
+                    })
+                    ->orWhereHas('categories', function ($q) use ($product) {
+                        $q->whereIn('categories.id', $product->categories->pluck('id'));
+                    });
+            })
+            ->published()
+            ->latest()
+            ->limit(4)
+            ->get();
+
+        $sections = getSection('about_us_page', false);
+
+        pushToGTM([
+            'event'        => 'page_view',
+            'page_type'    => 'product_detail',
+            'product_id'   => $product->id,
+            'product_name' => $product->name,
+            'user_id'      => auth()->id() ?? 0,
+            'user_role'    => auth()->check() ? auth()->user()->name : 'guest',
+            'language'     => getSessionLanguage(),
+        ]);
+
+        $pixelData = [
+            'content_ids'  => [$product->id],
+            'content_name' => $product->name,
+            'content_type' => 'product',
+            'value'        => (float) $product->price,
+            'currency'     => 'USD',
+        ];
+
+        session()->flash('pixel_payload', [
+            'event' => 'ViewContent',
+            'data'  => $pixelData,
+        ]);
+
+        return view('website.product-marketing-details', compact('product', 'sections', 'relatedProducts'));
+    }
+
     /**
      * @param Request $request
      */
