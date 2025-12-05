@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Khati Shaad</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/select2.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg main_menu">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Khati Shaad" class="img-fluid">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+                </svg>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <ul class="right_menu">
+                    <li>
+                        <span class="cart_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                            </svg>
+                            <b>0</b>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="call_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.75 3.75 18 6m0 0 2.25 2.25M18 6l2.25-2.25M18 6l-2.25 2.25m1.5 13.5c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 0 1 4.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 0 0-.38 1.21 12.035 12.035 0 0 0 7.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 0 1 1.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 0 1-2.25 2.25h-2.25Z" />
+                            </svg>
+                        </span>
+                        <h5>Hotline:</h5>
+                        <a href="callto:+8801773335481">+8801773335481</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="grocery_banner" style="background: url(images/banner_bg.jpg);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="grocery_banner_text">
+                        <h1>মদিনার রসালো স্বাদ ও পুষ্টিতে ভরপুর ন্যাচারালস সুপার প্রিমিয়াম খেজুর।
+                        </h1>
+                        <div class="border_text">
+                            <p>সরাসরি কিনতে ফোন করুন</p>
+                            <a href="callto:12345678901">+8801711112222</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="grocery_banner_img">
+                        <div class="img">
+                            <img src="images/banner_img.png" alt="grocery-banner" class="img-fluid w-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="grocery_details_tow">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-6 col-xl-6">
+                    <div class="grocery_details_text">
+                        <div class="grocery_heading">
+                            <h2>লোফার জুতা কেন পড়বেন?</h2>
+                        </div>
+                        <ul>
+                            <li>পাঞ্জাবি ও পায়জামার সাথে মানানসই।</li>
+                            <li>ফরমাল ইউজে জিন্সের সাথে প্রিমিয়াম লুক।</li>
+                            <li>রাফ ইউজেও কম্ফোর্টেবল।</li>
+                            <li>ব্যবহারে পাবেন যথেষ্ট আরামদায়ক অনুভূতি।</li>
+                            <li>আকর্ষণীয় ডিজাইনে তৈরি করা হয়েছে।</li>
+                        </ul>
+                        <a href="#" class="common_btn">
+                            <span>অর্ডার করতে চাই</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-5">
+                    <div class="grocery_details_img">
+                        <img src="images/shoes.png" alt="img-fluid w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="grocery_details" style="background: url(images/bg_1.jpg);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8">
+                    <div class="grocery_details_text">
+                        <div class="grocery_heading">
+                            <h2>অরজিনাল চামড়া চেনার উপায় কি?</h2>
+                        </div>
+                        <ul>
+                            <li>ম্যাচের কাঠি বা লাইটার জ্বালিয়ে হালকাভাবে চামড়া জিনিসটার নিচে ধরুন। যদি কুঁচকে যায় বা
+                                পুড়ে যায় তবে চামড়া নয়।</li>
+                            <li>চামড়ার জিনিসটি একটি ভাজ দিয়ে দেখুন আবার পূর্বের অবস্থায় ফিরে যায় কিনা যদি না আসে তবে
+                                বুঝবেন চামড়া।সিন্থেটিক জিনিস বারবার ভাজ করলেও একই রকম থাকবে।</li>
+                            <li>দুই ফোঁটা পানি নিন চামড়ার জিনিসটির উপর পানি দিয়ে ঘষা দিন খেয়াল রাখুন, চামড়ার জিনিস
+                                হলে পানি দেওয়া জায়গাটি একটু হলেও ফুলে উঠবে।</li>
+                            <li>চামড়ার জিনিসের ফিনিশিং কখনোই সিন্থেটিক লেদার বা রেকসিন এর মত খুব স্মুথ হবে না। প্রকৃত
+                                চামড়া সিন্থেটিক লেদার বা রেকসিনের মত এত বেশি স্মুথ হবেনা। প্রকৃত চামড়া একটু হলেও ১৯-২০
+                                হবে।</li>
+                        </ul>
+                        <a href="#" class="common_btn">
+                            <span>অর্ডার করতে চাই</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="grocery_details_three">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-6 col-xl-5">
+                    <div class="grocery_details_img">
+                        <img src="images/shoes2.png" alt="img-fluid w-100">
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-6">
+                    <div class="grocery_details_text">
+                        <div class="grocery_heading">
+                            <h2>Fortune Leather BD থেকে কেন কিনবেন?</h2>
+                        </div>
+                        <ul>
+                            <li>অর্ডার করতে একটি টাকাও অগ্রিম পেমেন্ট করতে হবে না।</li>
+                            <li>প্রোডাক্ট হাতে পেয়ে চেক করে
+                                মূল্য পরিশোধ করতে পারবেন।</li>
+                            <li>শতভাগ গরুর চামড়া ও নরম সোল দিয়ে বানানো।</li>
+                            <li>পাচ্ছেন ছয় মাসের রিপ্লেসমেন্ট গ্যারান্টি।</li>
+                            <li>জুতার সাইজ ছোট বড় হয়ে গেলে এক্সচেঞ্জ সুবিধা।</li>
+                            <li>চামড়া না! প্রমাণ করতে পারলে 20 হাজার টাকা পুরস্কার।</li>
+                        </ul>
+                        <a href="#" class="common_btn">
+                            <span>অর্ডার করতে চাই</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="grocery_faq">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8">
+                    <div class="grocery_heading">
+                        <h2>কোনো আমাদের থ্রি পিস কম্বো কিনবেন!</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-11">
+                    <div class="grocery_faq_area">
+                        <div class="accordion accordion-flush grocery_faq_text" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapse21" aria-expanded="false"
+                                        aria-controls="flush-collapse21">
+                                        আতরটির ঘ্রাণ সাধারণত কতক্ষণ থাকে?
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse21" class="accordion-collapse collapse show"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে।</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapse22" aria-expanded="false"
+                                        aria-controls="flush-collapse22">
+                                        আতর টি কি সরাসরি শরীরে ব্যবহার করতে পারবো?
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse22" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে।</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapse23" aria-expanded="false"
+                                        aria-controls="flush-collapse23">
+                                        আপনাদের কি কোনো শো-রুম আছে ?
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse23" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে।</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapse24" aria-expanded="false"
+                                        aria-controls="flush-collapse24">
+                                        আমি কি পণ্যটি দেখে শুঁকে নিতে পারবো?
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse24" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে।</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapse25" aria-expanded="false"
+                                        aria-controls="flush-collapse25">
+                                        ভাই দাম টা একটু বেশী মনে হচ্ছে.
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse25" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
+                                        দুশ্চিন্তামুক্ত রাখে।</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="grocery_offer" style="background: url(images/bg_2.jpg);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8">
+                    <div class="grocery_offer_text">
+                        <p>জনপ্রিয় এই লোফারের পূর্বের মূল্য <del>১৪০০/-</del> টাকা</p>
+                        <h3>আজকের অফার মূল্য মাত্র <span>১১০০/-</span> টাকা</h3>
+                        <p>অফারটি লুফে নিতে এখনি <span>“অর্ডার করতে চাই”</span> বাটনে ক্লিক করুন
+                        </p>
+                        <a href="#" class="common_btn">
+                            <span>অর্ডার করতে চাই</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="grocery_review">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-7">
+                    <div class="grocery_heading center_heading">
+                        <h2>কাস্টমার রিভিউ</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-11">
+                    <div class="row grocery_review_slide">
+                        <div class="col-xl-3">
+                            <div class="grocery_single_review">
+                                <img src="images/tshirt_review_1.jpg" alt=" img-fluid w-100">
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="grocery_single_review">
+                                <img src="images/tshirt_review_2.jpg" alt="img-fluid w-100">
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="grocery_single_review">
+                                <img src="images/tshirt_review_3.jpg" alt="img-fluid w-100">
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="grocery_single_review">
+                                <img src="images/tshirt_review_4.jpg" alt="img-fluid w-100">
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="grocery_single_review">
+                                <img src="images/tshirt_review_2.jpg" alt="img-fluid w-100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="billing_form mt_130 xs_mt_90">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-7">
+                    <div class="grocery_heading center_heading">
+                        <h2>অর্ডার করতে নিচের ফর্মটি পূরন করুন</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-11">
+                    <form class="billing_checkout_form">
+                        <h3>প্রোডাক্ট সিলেক্ট করুন</h3>
+                        <div class="row">
+                            <div class="col-lg-6 col-xl-6">
+                                <div class="product_select">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="radioDefault"
+                                            id="radioDefault1">
+                                        <label class="product_select_details" for="radioDefault1">
+                                            <span class="img">
+                                                <img src="images/shoes.jpg" alt=" img-fluid w-100">
+                                            </span>
+                                            <span class="text">
+                                                <b>চার পিস হাফ-হাতা টি শার্ট</b>
+                                                <b>(M, L, XL, XXL) x 1</b>
+                                                <b>৳ 999</b>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xl-6">
+                                <div class="product_select">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="radioDefault"
+                                            id="radioDefault2">
+                                        <label class="product_select_details" for="radioDefault2">
+                                            <span class="img">
+                                                <img src="images/shoes.jpg" alt="img-fluid w-100">
+                                            </span>
+                                            <span class="text">
+                                                <b>চার পিস হাফ-হাতা টি শার্ট</b>
+                                                <b>(M, L, XL, XXL) x 1</b>
+                                                <b>৳ 999</b>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-xl-6">
+                                <div class="billing_details">
+                                    <h4>আপনার বিলিং তথ্য দিন</h4>
+                                    <div class="billing_single_input">
+                                        <label>আপনার নাম<span>*</span></label>
+                                        <input type="text" placeholder="আপনার নাম">
+                                    </div>
+                                    <div class="billing_single_input">
+                                        <label>মোবাইল নাম্বার <span>*</span></label>
+                                        <input type="text" placeholder="মোবাইল নাম্বার">
+                                    </div>
+                                    <div class="billing_single_input">
+                                        <label>আপনার ঠিকানা<span>*</span></label>
+                                        <input type="text" placeholder="বাসা নং, রোড নং, গ্রাম/মহল্লা, থানা">
+                                    </div>
+                                    <div class="billing_single_input">
+                                        <label>আপনার জেলা<span>*</span></label>
+                                        <select class="select_2 select2-hidden-accessible" name="state"
+                                            data-select2-id="select2-data-1-56cl" tabindex="-1" aria-hidden="true">
+                                            <option value="" data-select2-id="select2-data-3-ju9n">জেলা নির্বাচন করুন
+                                            </option>
+                                            <option value="">ভোলা</option>
+                                            <option value="">বরগুনা</option>
+                                            <option value="">কুমিল্লা</option>
+                                            <option value="">যশোর</option>
+                                        </select>
+                                    </div>
+                                    <div class="billing_single_input">
+                                        <label>আপনার বিভাগ<span>*</span></label>
+                                        <select class="select_2 select2-hidden-accessible" name="state"
+                                            data-select2-id="select2-data-4-vgk0" tabindex="-1" aria-hidden="true">
+                                            <option value="" data-select2-id="select2-data-6-pxju">বিভাগ নির্বাচন করুন
+                                            </option>
+                                            <option value="">ঢাকা</option>
+                                            <option value="">বরিশাল</option>
+                                            <option value="">চট্টগ্রাম</option>
+                                            <option value="">সিলেট</option>
+                                        </select>
+                                    </div>
+                                    <div class="billing_single_input">
+                                        <label>আপনার দেশ<span>*</span></label>
+                                        <select class="select_2 select2-hidden-accessible" name="state"
+                                            data-select2-id="select2-data-7-ev74" tabindex="-1" aria-hidden="true">
+                                            <option value="" data-select2-id="select2-data-9-aowr">দেশ নির্বাচন করুন
+                                            </option>
+                                            <option value="">বাংলাদেশ</option>
+                                            <option value="">ভারত</option>
+                                            <option value="">পাকিস্তান</option>
+                                            <option value="">শ্রীলংকা</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xl-6">
+                                <div class="billing_orders">
+                                    <h4>আপনার অর্ডার সমূহ</h4>
+                                    <div class="billing_orders_top">
+                                        <h5>Product</h5>
+                                        <h6>Subtotal</h6>
+                                    </div>
+                                    <ul class="billing_orders_product">
+                                        <li>
+                                            <div class="product">
+                                                <div class="img">
+                                                    <img src="images/shoes.jpg" alt="img-fluid w-100">
+                                                </div>
+                                                <div class="text">
+                                                    <h5>৩ পিস টি-শার্ট</h5>
+                                                    <div class="product_quantity">
+                                                        <span class="minus">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                viewBox="0 0 24 24" stroke-width="1.5"
+                                                                stroke="currentColor" class="size-6">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    d="M12 4.5v15m7.5-7.5h-15" />
+                                                            </svg>
+                                                        </span>
+                                                        <input type="text" placeholder="1">
+                                                        <span class="plus">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                viewBox="0 0 24 24" stroke-width="1.5"
+                                                                stroke="currentColor" class="size-6">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    d="M5 12h14" />
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h6>1,190.00৳</h6>
+                                        </li>
+                                        <li>
+                                            <div class="product">
+                                                <div class="img">
+                                                    <img src="images/shoes.jpg" alt="img-fluid w-100">
+                                                </div>
+                                                <div class="text">
+                                                    <h5>৩ পিস টি-শার্ট</h5>
+                                                    <div class="product_quantity">
+                                                        <span class="minus">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                viewBox="0 0 24 24" stroke-width="1.5"
+                                                                stroke="currentColor" class="size-6">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    d="M12 4.5v15m7.5-7.5h-15" />
+                                                            </svg>
+                                                        </span>
+                                                        <input type="text" placeholder="1">
+                                                        <span class="plus">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                viewBox="0 0 24 24" stroke-width="1.5"
+                                                                stroke="currentColor" class="size-6">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    d="M5 12h14" />
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h6>1,190.00৳</h6>
+                                        </li>
+                                    </ul>
+                                    <div class="billing_orders_subtotal">
+                                        <div class="subtotal">
+                                            <h5>Subtotal</h5>
+                                            <h6>2,380.00৳ </h6>
+                                        </div>
+                                        <div class="subtotal">
+                                            <h5>Shipping</h5>
+                                            <div class="charge">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="flexRadioDefaultt" id="flexRadioDefaultt5" checked="">
+                                                    <label class="form-check-label" for="flexRadioDefaultt5">
+                                                        ঢাকার ভিতরে ডেলিভারি চার্জ: 60.00৳
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="flexRadioDefaultt" id="flexRadioDefaultt6">
+                                                    <label class="form-check-label" for="flexRadioDefaultt6">
+                                                        ঢাকার বাইরে ডেলিভারি চার্জ: 120.00৳
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="billing_orders_total">
+                                        <h5>Total</h5>
+                                        <h6>2,440.00৳</h6>
+                                    </div>
+                                    <div class="product_payment">
+                                        <div class="accordion product_payment_accordion" id="accordionExample">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapse11"
+                                                        aria-expanded="true" aria-controls="collapse11">
+                                                        Cash on delivery
+                                                    </button>
+                                                </h2>
+                                                <div id="collapse11" class="accordion-collapse collapse show"
+                                                    data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <p>Pay with cash upon delivery.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapse12"
+                                                        aria-expanded="false" aria-controls="collapse12">
+                                                        bKash
+                                                        <img src="images/bkash.png" alt="img-fluid w-100">
+                                                    </button>
+                                                </h2>
+                                                <div id="collapse12" class="accordion-collapse collapse"
+                                                    data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <p>Please complete your bKash Send Money at first, then fill up
+                                                            the form below.</p>
+                                                        <span>bKash Personal Number : +8801782844633</span>
+                                                        <div class="pay_info">
+                                                            <label>bKash Number</label>
+                                                            <input type="text" placeholder="016XXXXXXXXX">
+                                                        </div>
+                                                        <div class="pay_info">
+                                                            <label>bKash Transaction ID</label>
+                                                            <input type="text" placeholder="SDD4674GH77J7">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapse13"
+                                                        aria-expanded="false" aria-controls="collapse13">
+                                                        Rocket
+                                                        <img src="images/rocket.png" alt="img-fluid w-100">
+                                                    </button>
+                                                </h2>
+                                                <div id="collapse13" class="accordion-collapse collapse"
+                                                    data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <p>Please complete your bKash Send Money at first, then fill up
+                                                            the form below.</p>
+                                                        <span>bKash Personal Number : +8801782844633</span>
+                                                        <div class="pay_info">
+                                                            <label>Rocket Number</label>
+                                                            <input type="text" placeholder="016XXXXXXXXX">
+                                                        </div>
+                                                        <div class="pay_info">
+                                                            <label>Rocket Transaction ID</label>
+                                                            <input type="text" placeholder="SDD4674GH77J7">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapse14"
+                                                        aria-expanded="false" aria-controls="collapse14">
+                                                        Nagad
+                                                        <img src="images/nagad.png" alt="img-fluid w-100">
+                                                    </button>
+                                                </h2>
+                                                <div id="collapse14" class="accordion-collapse collapse"
+                                                    data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <p>Please complete your bKash Send Money at first, then fill up
+                                                            the form below.</p>
+                                                        <span>bKash Personal Number : +8801782844633</span>
+                                                        <div class="pay_info">
+                                                            <label>Nagad Number</label>
+                                                            <input type="text" placeholder="016XXXXXXXXX">
+                                                        </div>
+                                                        <div class="pay_info">
+                                                            <label>Nagad Transaction ID</label>
+                                                            <input type="text" placeholder="SDD4674GH77J7">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product_payment_btn">
+                                        <p>Your personal data will be used to process your order, support your
+                                            experience throughout this website, and for other purposes described in our
+                                            <a href="#">privacy policy</a>.
+                                        </p>
+                                        <button class="common_btn">
+                                            <span>অর্ডার করুন 2,440.00</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="grocery_copy_right">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-11">
+                    <div class="grocery_copy_right_text">
+                        <p>Copyright © 2025 | All rights reserved | Landing page made by company</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--jquery library js-->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/select2.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.select_2').select2();
+        });
+
+        $('.grocery_review_slide').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+            dots: true,
+            arrows: false,
+
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 576,
+                    settings: {
+                        slidesToShow: 1,
+                        arrows: false,
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
