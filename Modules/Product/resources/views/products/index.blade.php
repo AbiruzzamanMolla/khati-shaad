@@ -295,6 +295,10 @@
                                                                         href="{{ route('admin.product-gallery', ['id' => $product->id]) }}">
                                                                         {{ __('Gallery') }}
                                                                         ({{ $product->gallery->count() ?? 0 }})</a>
+
+                                                                    <a class="dropdown-item"
+                                                                        href="{{ route('admin.product.marketing-details', ['id' => $product->id]) }}">
+                                                                        {{ __('Marketing Details') }}</a>
                                                                 @endadminCan
 
                                                                 @adminCan('product.edit')

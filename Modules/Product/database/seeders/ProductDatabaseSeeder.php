@@ -25,6 +25,7 @@ use Modules\Product\app\Models\UnitType;
 use Modules\Product\app\Models\Variant;
 use Modules\Product\app\Models\VariantOption;
 use Modules\Product\Database\Seeders\AttributeSeeder;
+use Modules\Product\Database\Seeders\ProductMarketingDetailsSeeder;
 use Modules\Stock\app\Models\Stock;
 use Modules\Tax\app\Models\Tax;
 
@@ -43,6 +44,7 @@ class ProductDatabaseSeeder extends Seeder
             TosSeeder::class,
             TagSeeder::class,
             AttributeSeeder::class,
+            ProductMarketingDetailsSeeder::class,
         ]);
 
         $this->generateProducts();

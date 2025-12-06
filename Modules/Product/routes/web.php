@@ -39,6 +39,7 @@ Route::name('admin.')
         Route::resource('product', ProductController::class);
 
         Route::get('product/marketing-details/{id}', [ProductMarketingController::class, 'marketingDetails'])->name('product.marketing-details');
+    Route::post('product/marketing-details/{id}', [ProductMarketingController::class, 'marketingDetailsStore'])->name('product.marketing-details.store');
 
         Route::get('sellers/products', [SellerProductController::class, 'index'])->name('seller.products.index');
 

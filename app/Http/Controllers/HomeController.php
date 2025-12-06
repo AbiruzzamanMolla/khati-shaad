@@ -644,6 +644,7 @@ class HomeController extends Controller
     public function productMarketingDetails($slug)
     {
         $product = Product::with([
+            'marketingDetails',
             'variants',
             'variantImage' => [
                 'attribute',

@@ -67,23 +67,26 @@
         </div>
     </nav>
 
-    <section class="grocery_banner" style="background: url({{ asset('website/ks/images/banner_bg.jpg') }});">
+    @php
+        $marketing = $product->marketingDetails;
+    @endphp
+
+    <section class="grocery_banner" style="background: url({{ $marketing->banner_bg_image ? asset($marketing->banner_bg_image) : asset('website/ks/images/banner_bg.jpg') }});">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7">
                     <div class="grocery_banner_text">
-                        <h1>মদিনার রসালো স্বাদ ও পুষ্টিতে ভরপুর ন্যাচারালস সুপার প্রিমিয়াম খেজুর।
-                        </h1>
+                        <h1>{{ $marketing->banner_title ?? 'মদিনার রসালো স্বাদ ও পুষ্টিতে ভরপুর ন্যাচারালস সুপার প্রিমিয়াম খেজুর।' }}</h1>
                         <div class="border_text">
-                            <p>সরাসরি কিনতে ফোন করুন</p>
-                            <a href="callto:12345678901">+8801711112222</a>
+                            <p>{{ $marketing->banner_phone_title ?? 'সরাসরি কিনতে ফোন করুন' }}</p>
+                            <a href="callto:{{ $marketing->banner_phone }}">{{ $marketing->banner_phone ?? '+8801711112222' }}</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5">
                     <div class="grocery_banner_img">
                         <div class="img">
-                            <img src="{{ asset('website/ks/images/banner_img.png') }}" alt="grocery-banner" class="img-fluid w-100">
+                            <img src="{{ $marketing->banner_image ? asset($marketing->banner_image) : asset('website/ks/images/banner_img.png') }}" alt="grocery-banner" class="img-fluid w-100">
                         </div>
                     </div>
                 </div>
@@ -97,50 +100,34 @@
                 <div class="col-md-6 col-xl-6">
                     <div class="grocery_details_text">
                         <div class="grocery_heading">
-                            <h2>লোফার জুতা কেন পড়বেন?</h2>
+                            <h2>{{ $marketing->section_two_heading ?? 'লোফার জুতা কেন পড়বেন?' }}</h2>
                         </div>
-                        <ul>
-                            <li>পাঞ্জাবি ও পায়জামার সাথে মানানসই।</li>
-                            <li>ফরমাল ইউজে জিন্সের সাথে প্রিমিয়াম লুক।</li>
-                            <li>রাফ ইউজেও কম্ফোর্টেবল।</li>
-                            <li>ব্যবহারে পাবেন যথেষ্ট আরামদায়ক অনুভূতি।</li>
-                            <li>আকর্ষণীয় ডিজাইনে তৈরি করা হয়েছে।</li>
-                        </ul>
-                        <a href="#" class="common_btn">
-                            <span>অর্ডার করতে চাই</span>
+                        {!! $marketing->section_two_description ?? '' !!}
+                        <a href="{{ $marketing->section_two_btn_url ?? '#' }}" class="common_btn">
+                            <span>{{ $marketing->section_two_btn_text ?? 'অর্ডার করতে চাই' }}</span>
                         </a>
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-5">
                     <div class="grocery_details_img">
-                        <img src="images/shoes.png" alt="img-fluid w-100">
+                        <img src="{{ $marketing->section_two_image ? asset($marketing->section_two_image) : asset('images/shoes.png') }}" alt="img-fluid w-100">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="grocery_details" style="background: url({{ asset('website/ks/images/bg_1.jpg') }});">
+    <section class="grocery_details" style="background: url({{ $marketing->section_three_bg_image ? asset($marketing->section_three_bg_image) : asset('website/ks/images/bg_1.jpg') }});">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8">
                     <div class="grocery_details_text">
                         <div class="grocery_heading">
-                            <h2>অরজিনাল চামড়া চেনার উপায় কি?</h2>
+                            <h2>{{ $marketing->section_three_heading ?? 'অরজিনাল চামড়া চেনার উপায় কি?' }}</h2>
                         </div>
-                        <ul>
-                            <li>ম্যাচের কাঠি বা লাইটার জ্বালিয়ে হালকাভাবে চামড়া জিনিসটার নিচে ধরুন। যদি কুঁচকে যায় বা
-                                পুড়ে যায় তবে চামড়া নয়।</li>
-                            <li>চামড়ার জিনিসটি একটি ভাজ দিয়ে দেখুন আবার পূর্বের অবস্থায় ফিরে যায় কিনা যদি না আসে তবে
-                                বুঝবেন চামড়া।সিন্থেটিক জিনিস বারবার ভাজ করলেও একই রকম থাকবে।</li>
-                            <li>দুই ফোঁটা পানি নিন চামড়ার জিনিসটির উপর পানি দিয়ে ঘষা দিন খেয়াল রাখুন, চামড়ার জিনিস
-                                হলে পানি দেওয়া জায়গাটি একটু হলেও ফুলে উঠবে।</li>
-                            <li>চামড়ার জিনিসের ফিনিশিং কখনোই সিন্থেটিক লেদার বা রেকসিন এর মত খুব স্মুথ হবে না। প্রকৃত
-                                চামড়া সিন্থেটিক লেদার বা রেকসিনের মত এত বেশি স্মুথ হবেনা। প্রকৃত চামড়া একটু হলেও ১৯-২০
-                                হবে।</li>
-                        </ul>
-                        <a href="#" class="common_btn">
-                            <span>অর্ডার করতে চাই</span>
+                         {!! $marketing->section_three_description ?? '' !!}
+                        <a href="{{ $marketing->section_three_btn_url ?? '#' }}" class="common_btn">
+                            <span>{{ $marketing->section_three_btn_text ?? 'অর্ডার করতে চাই' }}</span>
                         </a>
                     </div>
                 </div>
@@ -153,25 +140,17 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-6 col-xl-5">
                     <div class="grocery_details_img">
-                        <img src="{{ asset('website/ks/images/shoes2.png') }}" alt="img-fluid w-100">
+                        <img src="{{ $marketing->section_four_image ? asset($marketing->section_four_image) : asset('website/ks/images/shoes2.png') }}" alt="img-fluid w-100">
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-6">
                     <div class="grocery_details_text">
                         <div class="grocery_heading">
-                            <h2>Fortune Leather BD থেকে কেন কিনবেন?</h2>
+                            <h2>{{ $marketing->section_four_heading ?? 'Fortune Leather BD থেকে কেন কিনবেন?' }}</h2>
                         </div>
-                        <ul>
-                            <li>অর্ডার করতে একটি টাকাও অগ্রিম পেমেন্ট করতে হবে না।</li>
-                            <li>প্রোডাক্ট হাতে পেয়ে চেক করে
-                                মূল্য পরিশোধ করতে পারবেন।</li>
-                            <li>শতভাগ গরুর চামড়া ও নরম সোল দিয়ে বানানো।</li>
-                            <li>পাচ্ছেন ছয় মাসের রিপ্লেসমেন্ট গ্যারান্টি।</li>
-                            <li>জুতার সাইজ ছোট বড় হয়ে গেলে এক্সচেঞ্জ সুবিধা।</li>
-                            <li>চামড়া না! প্রমাণ করতে পারলে 20 হাজার টাকা পুরস্কার।</li>
-                        </ul>
-                        <a href="#" class="common_btn">
-                            <span>অর্ডার করতে চাই</span>
+                        {!! $marketing->section_four_description ?? '' !!}
+                        <a href="{{ $marketing->section_four_btn_url ?? '#' }}" class="common_btn">
+                            <span>{{ $marketing->section_four_btn_text ?? 'অর্ডার করতে চাই' }}</span>
                         </a>
                     </div>
                 </div>
@@ -184,7 +163,7 @@
             <div class="row justify-content-center">
                 <div class="col-xl-8">
                     <div class="grocery_heading">
-                        <h2>কোনো আমাদের থ্রি পিস কম্বো কিনবেন!</h2>
+                        <h2>{{ $marketing->faq_heading ?? 'কোনো আমাদের থ্রি পিস কম্বো কিনবেন!' }}</h2>
                     </div>
                 </div>
             </div>
@@ -192,91 +171,23 @@
                 <div class="col-xl-11">
                     <div class="grocery_faq_area">
                         <div class="accordion accordion-flush grocery_faq_text" id="accordionFlushExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapse21" aria-expanded="false"
-                                        aria-controls="flush-collapse21">
-                                        আতরটির ঘ্রাণ সাধারণত কতক্ষণ থাকে?
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse21" class="accordion-collapse collapse show"
-                                    data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে।</div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapse22" aria-expanded="false"
-                                        aria-controls="flush-collapse22">
-                                        আতর টি কি সরাসরি শরীরে ব্যবহার করতে পারবো?
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse22" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে।</div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapse23" aria-expanded="false"
-                                        aria-controls="flush-collapse23">
-                                        আপনাদের কি কোনো শো-রুম আছে ?
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse23" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে।</div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapse24" aria-expanded="false"
-                                        aria-controls="flush-collapse24">
-                                        আমি কি পণ্যটি দেখে শুঁকে নিতে পারবো?
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse24" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে।</div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapse25" aria-expanded="false"
-                                        aria-controls="flush-collapse25">
-                                        ভাই দাম টা একটু বেশী মনে হচ্ছে.
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse25" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে। সুঘ্রাণ দীর্ঘ সময় ধরে রেখে, শরীরের দুর্গন্ধ বিষয়ে
-                                        দুশ্চিন্তামুক্ত রাখে।</div>
-                                </div>
-                            </div>
+                            @if(isset($marketing->faqs) && !empty(json_decode($marketing->faqs)))
+                                @foreach(json_decode($marketing->faqs) as $index => $faq)
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button {{ $index == 0 ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#flush-collapse{{ $index }}" aria-expanded="{{ $index == 0 ? 'true' : 'false' }}"
+                                                aria-controls="flush-collapse{{ $index }}">
+                                                {{ $faq->question }}
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapse{{ $index }}" class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">{{ $faq->answer }}</div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -284,17 +195,17 @@
         </div>
     </section>
 
-    <section class="grocery_offer" style="background: url({{ asset('website/ks/images/bg_2.jpg') }});">
+    <section class="grocery_offer" style="background: url({{ $marketing->offer_bg_image ? asset($marketing->offer_bg_image) : asset('website/ks/images/bg_2.jpg') }});">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8">
                     <div class="grocery_offer_text">
-                        <p>জনপ্রিয় এই লোফারের পূর্বের মূল্য <del>১৪০০/-</del> টাকা</p>
-                        <h3>আজকের অফার মূল্য মাত্র <span>১১০০/-</span> টাকা</h3>
-                        <p>অফারটি লুফে নিতে এখনি <span>“অর্ডার করতে চাই”</span> বাটনে ক্লিক করুন
+                        <p>{{ $marketing->offer_text_1 ?? 'জনপ্রিয় এই লোফারের পূর্বের মূল্য' }} <del>{{ $marketing->offer_old_price ?? '১৪০০/-' }}</del> টাকা</p>
+                        <h3>{{ $marketing->offer_text_2 ?? 'আজকের অফার মূল্য মাত্র' }} <span>{{ $marketing->offer_current_price ?? '১১০০/-' }}</span> টাকা</h3>
+                        <p>{{ $marketing->offer_text_3 ?? 'অফারটি লুফে নিতে এখনি' }} <span>“{{ $marketing->offer_btn_text ?? 'অর্ডার করতে চাই' }}”</span> বাটনে ক্লিক করুন
                         </p>
-                        <a href="#" class="common_btn">
-                            <span>অর্ডার করতে চাই</span>
+                        <a href="{{ $marketing->offer_btn_url ?? '#' }}" class="common_btn">
+                            <span>{{ $marketing->offer_btn_text ?? 'অর্ডার করতে চাই' }}</span>
                         </a>
                     </div>
                 </div>
@@ -307,38 +218,22 @@
             <div class="row justify-content-center">
                 <div class="col-xl-7">
                     <div class="grocery_heading center_heading">
-                        <h2>কাস্টমার রিভিউ</h2>
+                        <h2>{{ $marketing->review_heading ?? 'কাস্টমার রিভিউ' }}</h2>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-xl-11">
                     <div class="row grocery_review_slide">
-                        <div class="col-xl-3">
-                            <div class="grocery_single_review">
-                                <img src="{{ asset('website/ks/images/tshirt_review_1.jpg') }}" alt=" img-fluid w-100">
-                            </div>
-                        </div>
-                        <div class="col-xl-3">
-                            <div class="grocery_single_review">
-                                <img src="{{ asset('website/ks/images/tshirt_review_2.jpg') }}" alt="img-fluid w-100">
-                            </div>
-                        </div>
-                        <div class="col-xl-3">
-                            <div class="grocery_single_review">
-                                <img src="{{ asset('website/ks/images/tshirt_review_3.jpg') }}" alt="img-fluid w-100">
-                            </div>
-                        </div>
-                        <div class="col-xl-3">
-                            <div class="grocery_single_review">
-                                <img src="{{ asset('website/ks/images/tshirt_review_4.jpg') }}" alt="img-fluid w-100">
-                            </div>
-                        </div>
-                        <div class="col-xl-3">
-                            <div class="grocery_single_review">
-                                <img src="{{ asset('website/ks/images/tshirt_review_2.jpg') }}" alt="img-fluid w-100">
-                            </div>
-                        </div>
+                        @if(isset($marketing->review_images) && !empty(json_decode($marketing->review_images)))
+                             @foreach(json_decode($marketing->review_images) as $img)
+                                <div class="col-xl-3">
+                                    <div class="grocery_single_review">
+                                        <img src="{{ asset($img) }}" alt="Review Image" class="img-fluid w-100">
+                                    </div>
+                                </div>
+                             @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

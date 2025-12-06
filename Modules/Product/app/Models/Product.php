@@ -958,6 +958,14 @@ class Product extends Model
         return $query->where(['status' => 1, 'is_approved' => 1]);
     }
 
+    /**
+     * @return mixed
+     */
+    public function marketingDetails(): ?HasOne
+    {
+        return $this->hasOne(ProductMarketingDetails::class, 'product_id', 'id');
+    }
+
     protected static function booted()
     {
         static::addGlobalScope(new WebsiteProductScope());
