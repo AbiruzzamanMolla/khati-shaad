@@ -13,9 +13,9 @@ class ProductMarketingDetailsSeeder extends Seeder
      */
     public function run(): void
     {
-        $product = Product::first();
+        $products = Product::all();
 
-        if ($product) {
+        foreach ($products as $product) {
             ProductMarketingDetails::updateOrCreate(
                 ['product_id' => $product->id],
                 [
@@ -29,9 +29,9 @@ class ProductMarketingDetailsSeeder extends Seeder
                     'section_two_description' => '<ul><li>পাঞ্জাবি ও পায়জামার সাথে মানানসই।</li><li>ফরমাল ইউজে জিন্সের সাথে প্রিমিয়াম লুক।</li><li>রাফ ইউজেও কম্ফোর্টেবল।</li><li>ব্যবহারে পাবেন যথেষ্ট আরামদায়ক অনুভূতি।</li><li>আকর্ষণীয় ডিজাইনে তৈরি করা হয়েছে।</li></ul>',
                     'section_two_btn_text' => 'অর্ডার করতে চাই',
                     'section_two_btn_url' => '#',
-                    'section_two_image' => 'images/shoes.png',
+                    'section_two_image' => 'website/ks/images/shoes.png',
 
-                    'section_three_bg_image' => 'website/ks/images/bg_1.jpg',
+                    'section_three_bg_image' => 'website/ks/website/ks/images/bg_1.jpg',
                     'section_three_heading' => 'অরজিনাল চামড়া চেনার উপায় কি?',
                     'section_three_description' => '<ul><li>ম্যাচের কাঠি বা লাইটার জ্বালিয়ে হালকাভাবে চামড়া জিনিসটার নিচে ধরুন। যদি কুঁচকে যায় বা পুড়ে যায় তবে চামড়া নয়।</li><li>চামড়ার জিনিসটি একটি ভাজ দিয়ে দেখুন আবার পূর্বের অবস্থায় ফিরে যায় কিনা যদি না আসে তবে বুঝবেন চামড়া।সিন্থেটিক জিনিস বারবার ভাজ করলেও একই রকম থাকবে।</li><li>দুই ফোঁটা পানি নিন চামড়ার জিনিসটির উপর পানি দিয়ে ঘষা দিন খেয়াল রাখুন, চামড়ার জিনিস হলে পানি দেওয়া জায়গাটি একটু হলেও ফুলে উঠবে।</li><li>চামড়ার জিনিসের ফিনিশিং কখনোই সিন্থেটিক লেদার বা রেকসিন এর মত খুব স্মুথ হবে না। প্রকৃত চামড়া সিন্থেটিক লেদার বা রেকসিনের মত এত বেশি স্মুথ হবেনা। প্রকৃত চামড়া একটু হলেও ১৯-২০ হবে।</li></ul>',
                     'section_three_btn_text' => 'অর্ডার করতে চাই',
