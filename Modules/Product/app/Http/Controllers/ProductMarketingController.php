@@ -28,14 +28,89 @@ class ProductMarketingController extends Controller
     public function marketingDetailsStore(Request $request, $id)
     {
         $request->validate([
-            'banner_image' => 'nullable|image',
-            'banner_bg_image' => 'nullable|image',
-            'section_two_image' => 'nullable|image',
-            'section_three_bg_image' => 'nullable|image',
-            'section_four_image' => 'nullable|image',
-            'offer_bg_image' => 'nullable|image',
-            'review_images.*' => 'nullable|image',
-            'seo_image' => 'nullable|image'
+            // Image Validation
+            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'banner_bg_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'section_two_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'section_three_bg_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'section_four_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'offer_bg_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'review_images.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'seo_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+
+            // URL Validation
+            'section_two_btn_url' => 'nullable|url',
+            'section_three_btn_url' => 'nullable|url',
+            'section_four_btn_url' => 'nullable|url',
+            'offer_btn_url' => 'nullable|url',
+            'nav_home_url' => 'nullable|string',
+            'nav_product_url' => 'nullable|string',
+            'nav_contact_url' => 'nullable|string',
+
+            // Text Validation
+            'banner_title' => 'nullable|string|max:255',
+            'banner_phone_title' => 'nullable|string|max:255',
+            'banner_phone' => 'nullable|string|max:20',
+            
+            'section_two_heading' => 'nullable|string|max:255',
+            'section_two_btn_text' => 'nullable|string|max:50',
+            'section_two_description' => 'nullable|string',
+
+            'section_three_heading' => 'nullable|string|max:255',
+            'section_three_btn_text' => 'nullable|string|max:50',
+            'section_three_description' => 'nullable|string',
+
+            'section_four_heading' => 'nullable|string|max:255',
+            'section_four_btn_text' => 'nullable|string|max:50',
+            'section_four_description' => 'nullable|string',
+
+            'faq_heading' => 'nullable|string|max:255',
+            'faqs' => 'nullable|array',
+            'faqs.*.question' => 'nullable|string|max:255',
+            'faqs.*.answer' => 'nullable|string',
+
+            'offer_text_1' => 'nullable|string|max:255',
+            'offer_old_price' => 'nullable|string|max:20',
+            'offer_text_2' => 'nullable|string|max:255',
+            'offer_current_price' => 'nullable|string|max:20',
+            'offer_text_3' => 'nullable|string|max:255',
+            'offer_btn_text' => 'nullable|string|max:50',
+
+            'review_heading' => 'nullable|string|max:255',
+            'checkout_heading' => 'nullable|string|max:255',
+            'copyright_text' => 'nullable|string|max:255',
+
+            'nav_home_text' => 'nullable|string|max:50',
+            'nav_product_text' => 'nullable|string|max:50',
+            'nav_contact_text' => 'nullable|string|max:50',
+            'nav_hotline_number' => 'nullable|string|max:20',
+
+            'seo_title' => 'nullable|string|max:255',
+            'seo_description' => 'nullable|string',
+            'seo_keywords' => 'nullable|string',
+
+            // Payment Numbers
+            'bkash_number' => 'nullable|string|max:20',
+            'rocket_number' => 'nullable|string|max:20',
+            'nagad_number' => 'nullable|string|max:20',
+            
+            // Checkout Products Validation
+            'checkout_products' => 'nullable|array',
+            'checkout_products.*.title' => 'nullable|string|max:255',
+            'checkout_products.*.price' => 'nullable|string|max:20',
+            'checkout_products.*.description' => 'nullable|string',
+            'checkout_products.*.image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+        ], [
+            'image' => __('The uploaded file must be an image.'),
+            'mimes' => __('The image must be a file of type: jpeg, png, jpg, webp.'),
+            'max' => __('The image size must not be greater than 2048 kilobytes.'),
+            'url' => __('The URL format is invalid.'),
+            'string' => __('This field must be a string.'),
+            'array' => __('This field must be an array.'),
+            'max.string' => __('The text may not be greater than :max characters.'),
+            'banner_image.max' => __('The banner image must not exceed 2MB.'),
+            'banner_bg_image.max' => __('The banner background image must not exceed 2MB.'),
+            'seo_image.max' => __('The SEO image must not exceed 2MB.'),
         ]);
 
         $product = Product::findOrFail($id);
@@ -60,12 +135,7 @@ class ProductMarketingController extends Controller
         // Handle Review Images (Multiple)
         if ($request->hasFile('review_images')) {
              $reviewImages = [];
-             // Keep existing images if any (optional, depending on requirement. Here we might just append or replace. 
-             // Usually for simple implementation we might just append to existing or replace. 
-             // Let's assume we append to existing or if null create new. 
-             // For this specific 'edit' form which allows selecting multiple, usually it parses what is sent.
-             // But standard file input multiple just sends new files.
-             // Let's grab existing first.
+             
              $existingImages = json_decode($marketing_detail->review_images, true) ?? [];
              
              foreach ($request->file('review_images') as $file) {
@@ -94,10 +164,8 @@ class ProductMarketingController extends Controller
         }
 
         // Handle FAQs (JSON)
-        // Request faqs should be an array of ['question' => '...', 'answer' => '...']
         if ($request->has('faqs')) {
             $faqs = $request->input('faqs');
-            // Filter empty ones
             $faqs = array_filter($faqs, function($faq){
                 return !empty($faq['question']) || !empty($faq['answer']);
             });
@@ -106,7 +174,6 @@ class ProductMarketingController extends Controller
 
         $marketing_detail->save();
 
-        // Handle Status Fields
         $statusFields = [
             'banner_status', 'section_two_status', 'section_three_status', 
             'section_four_status', 'faq_status', 'offer_status', 'review_status'

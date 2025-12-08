@@ -52,7 +52,7 @@
                                                                 <label>{{ __('Home URL') }}</label>
                                                                 <input class="form-control" name="nav_home_url"
                                                                     type="text"
-                                                                    value="{{ $marketing_detail->nav_home_url ?? '#' }}">
+                                                                    value="{{ filled($marketing_detail->nav_home_url) ? $marketing_detail->nav_home_url : route('website.home') }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -68,7 +68,7 @@
                                                                 <label>{{ __('Product URL') }}</label>
                                                                 <input class="form-control" name="nav_product_url"
                                                                     type="text"
-                                                                    value="{{ $marketing_detail->nav_product_url ?? '#' }}">
+                                                                    value="{{ filled($marketing_detail->nav_product_url) ? $marketing_detail->nav_product_url : route('website.products') }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
