@@ -4,7 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>{{ $product->name }}</title>
+    <title>{{ $marketing->seo_title ?? $product->name }}</title>
+
+    <meta name="robots" content="{{ !getSettingStatus('search_engine_indexing') ? 'noindex, nofollow' : 'index, follow' }}">
+
+    @if ($marketing->seo_description)
+        <meta name="description" content="{{ $marketing->seo_description }}">
+    @else
+        <meta name="description" content="{{ Str::limit(strip_tags($product->description ?? $product->name), 160) }}">
+    @endif
+
+    @if ($marketing->seo_keywords)
+        <meta name="keywords" content="{{ $marketing->seo_keywords }}">
+    @endif
+
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="{{ $marketing->seo_title ?? $product->name }}">
+
+    @if ($marketing->seo_description)
+        <meta property="og:description" content="{{ $marketing->seo_description }}">
+    @else
+        <meta property="og:description"
+            content="{{ Str::limit(strip_tags($product->description ?? $product->name), 200) }}">
+    @endif
+
+    <meta property="og:url" content="{{ url()->current() }}">
+
+    @if ($marketing->seo_image)
+        <meta property="og:image" content="{{ asset($marketing->seo_image) }}">
+    @elseif($product->thumbnail_image)
+        <meta property="og:image" content="{{ asset($product->thumbnail_image) }}">
+    @endif
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $marketing->seo_title ?? $product->name }}">
+
+    @if ($marketing->seo_description)
+        <meta name="twitter:description" content="{{ $marketing->seo_description }}">
+    @else
+        <meta name="twitter:description"
+            content="{{ Str::limit(strip_tags($product->description ?? $product->name), 200) }}">
+    @endif
+
+    @if ($marketing->seo_image)
+        <meta name="twitter:image" content="{{ asset($marketing->seo_image) }}">
+    @elseif($product->thumbnail_image)
+        <meta name="twitter:image" content="{{ asset($product->thumbnail_image) }}">
+    @endif
+
+    <link rel="canonical" href="{{ url()->current() }}">
     <link type="image/png" href="{{ asset('website/ks/images/favicon.png') }}" rel="icon">
     <link href="{{ asset('website/ks/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('website/ks/css/slick.css') }}" rel="stylesheet">
@@ -53,7 +101,8 @@
                             </svg>
                         </span>
                         <h5>{{ $marketing->nav_hotline_title }}</h5>
-                        <a href="callto:{{ $marketing->nav_hotline_number }}">{{ $marketing->nav_hotline_number }}</a>
+                        <a
+                            href="callto:{{ $marketing->nav_hotline_number }}">{{ $marketing->nav_hotline_number }}</a>
                     </li>
                 </ul>
             </div>
@@ -274,37 +323,41 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row justify-content-center">
-                
+
                 <div class="col-xl-11">
                     <form class="billing_checkout_form" action="{{ route('website.place.marketing.order') }}"
                         method="POST">
                         @csrf
                         @if ($product->hasVariant)
-                        <h3>প্রোডাক্ট সিলেক্ট করুন</h3>
-                        <div class="row">
-                            @foreach ($product->getVariantsPriceAndSkuAttribute() as $variant)
-                            <div class="col-lg-6 col-xl-6">
-                                <div class="product_select">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="variant"
-                                            id="variant_{{ $variant['sku'] }}" value="{{ $variant['sku'] }}" data-name="{{ $product->name }} ({{ $variant['name'] }})" data-image="{{ get_valid_image_url($variant['image'], asset($product->thumbnail_image)) }}">
-                                        <label class="product_select_details" for="variant_{{ $variant['sku'] }}">
-                                            <span class="img">
-                                                <img src="{{ get_valid_image_url($variant['image'], asset($product->thumbnail_image)) }}" alt=" img-fluid w-100">
-                                            </span>
-                                            <span class="text">
-                                                <b>{{ $product->name }} ({{ $variant['name'] }})</b>
-                                                <b>{{ $variant['sku'] }}</b>
-                                                <b>{{ currency($variant['price']) }}</b>
-                                            </span>
-                                        </label>
+                            <h3>প্রোডাক্ট সিলেক্ট করুন</h3>
+                            <div class="row">
+                                @foreach ($product->getVariantsPriceAndSkuAttribute() as $variant)
+                                    <div class="col-lg-6 col-xl-6">
+                                        <div class="product_select">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="variant"
+                                                    id="variant_{{ $variant['sku'] }}" value="{{ $variant['sku'] }}"
+                                                    data-name="{{ $product->name }} ({{ $variant['name'] }})"
+                                                    data-image="{{ get_valid_image_url($variant['image'], asset($product->thumbnail_image)) }}">
+                                                <label class="product_select_details"
+                                                    for="variant_{{ $variant['sku'] }}">
+                                                    <span class="img">
+                                                        <img src="{{ get_valid_image_url($variant['image'], asset($product->thumbnail_image)) }}"
+                                                            alt=" img-fluid w-100">
+                                                    </span>
+                                                    <span class="text">
+                                                        <b>{{ $product->name }} ({{ $variant['name'] }})</b>
+                                                        <b>{{ $variant['sku'] }}</b>
+                                                        <b>{{ currency($variant['price']) }}</b>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
-                            @endforeach
-                        </div>
                         @endif
                         <div class="row">
                             <div class="col-lg-6 col-xl-6">
@@ -386,7 +439,8 @@
                                         <li>
                                             <div class="product">
                                                 <div class="img">
-                                                    <img src="{{ get_valid_image_url(asset($product->thumbnail_image), asset($setting->default_avatar)) }}" alt="img-fluid w-100">
+                                                    <img src="{{ get_valid_image_url(asset($product->thumbnail_image), asset($setting->default_avatar)) }}"
+                                                        alt="img-fluid w-100">
                                                 </div>
                                                 <div class="text">
                                                     <h5>{{ $product->name }}</h5>

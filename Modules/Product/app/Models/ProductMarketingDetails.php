@@ -54,12 +54,14 @@ class ProductMarketingDetails extends Model
         'nav_contact_text',
         'nav_contact_url',
         'nav_hotline_number',
-        'checkout_products',
         'bkash_number',
         'rocket_number',
         'nagad_number',
-        'checkout_heading',
         'copyright_text',
+        'seo_title',
+        'seo_description',
+        'seo_image',
+        'seo_keywords',
         'banner_status',
         'section_two_status',
         'section_three_status',
@@ -72,7 +74,6 @@ class ProductMarketingDetails extends Model
     protected $casts = [
         'faqs' => 'array',
         'review_images' => 'array',
-        'checkout_products' => 'array',
     ];
     
     /*protected static function newFactory(): ProductMarketingDetailsFactory

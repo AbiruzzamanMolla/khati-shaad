@@ -79,9 +79,15 @@ return new class extends Migration
             $table->string('nav_contact_url')->nullable()->default('#');
             $table->string('nav_hotline_number')->nullable();
 
+            // SEO Section
+            $table->string('seo_title')->nullable();
+            $table->text('seo_description')->nullable();
+            $table->string('seo_image')->nullable();
+            $table->text('seo_keywords')->nullable();
+
             // Footer / Checkout Misc
             $table->string('checkout_heading')->nullable();
-            $table->string('copyright_text')->nullable();
+            $table->string('copyright_text')->nullable(); 
 
             $table->timestamps();
         });

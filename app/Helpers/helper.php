@@ -82,7 +82,7 @@ function file_upload(UploadedFile $file, string $path = 'uploads/custom-images/'
     $file->move(public_path($path), $file_name);
 
     try {
-        if ($oldFile && !str($oldFile)->contains('uploads/website-images') && File::exists(public_path($oldFile))) {
+        if ($oldFile && !str($oldFile)->contains('uploads/website-images') && !str($oldFile)->contains('website/ks/images') && File::exists(public_path($oldFile))) {
             unlink(public_path($oldFile));
         }
 

@@ -100,6 +100,51 @@
                                             </div>
                                         </div>
 
+                                        {{-- SEO Section --}}
+                                        <div class="col-12 mb-4">
+                                            <div class="card">
+                                                <div class="card-header bg-primary">
+                                                    <h4 class="text-white">{{ __('SEO Settings') }}</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>{{ __('SEO Title') }}</label>
+                                                                <input class="form-control" name="seo_title" type="text"
+                                                                    value="{{ $marketing_detail->seo_title ?? '' }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>{{ __('SEO Keywords') }}</label>
+                                                                <input class="form-control" name="seo_keywords" type="text"
+                                                                    value="{{ $marketing_detail->seo_keywords ?? '' }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>{{ __('SEO Description') }}</label>
+                                                                <textarea class="form-control" name="seo_description" rows="3">{{ $marketing_detail->seo_description ?? '' }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>{{ __('SEO Image') }}</label>
+                                                                <input class="form-control" name="seo_image" type="file">
+                                                                @if ($marketing_detail->seo_image)
+                                                                    <div class="mt-2">
+                                                                        <img src="{{ asset($marketing_detail->seo_image) }}"
+                                                                            alt="SEO Image" width="100">
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         {{-- Banner Section --}}
                                         <div class="col-12 mb-4">
                                             <div class="card border-primary">

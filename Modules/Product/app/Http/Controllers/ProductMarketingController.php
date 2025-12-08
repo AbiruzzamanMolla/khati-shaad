@@ -34,7 +34,8 @@ class ProductMarketingController extends Controller
             'section_three_bg_image' => 'nullable|image',
             'section_four_image' => 'nullable|image',
             'offer_bg_image' => 'nullable|image',
-            'review_images.*' => 'nullable|image'
+            'review_images.*' => 'nullable|image',
+            'seo_image' => 'nullable|image'
         ]);
 
         $product = Product::findOrFail($id);
@@ -45,13 +46,13 @@ class ProductMarketingController extends Controller
         // Handle File Uploads
         $fileFields = [
             'banner_image', 'banner_bg_image', 'section_two_image', 
-            'section_three_bg_image', 'section_four_image', 'offer_bg_image'
+            'section_three_bg_image', 'section_four_image', 'offer_bg_image', 'seo_image'
         ];
 
         foreach ($fileFields as $field) {
             if ($request->hasFile($field)) {
                 $file = $request->file($field);
-                $path = file_upload($file, 'uploads/custom-images/', $marketing_detail->$field);
+                $path = file_upload($file, oldFile: $marketing_detail->$field);
                 $marketing_detail->$field = $path;
             }
         }
@@ -81,9 +82,9 @@ class ProductMarketingController extends Controller
             'section_three_heading', 'section_three_description', 'section_three_btn_text', 'section_three_btn_url',
             'section_four_heading', 'section_four_description', 'section_four_btn_text', 'section_four_btn_url',
             'faq_heading', 'offer_text_1', 'offer_old_price', 'offer_text_2', 'offer_current_price', 
-            'offer_text_3', 'offer_btn_text', 'offer_btn_url', 'review_heading', 'checkout_heading', 'copyright_text',
+            'offer_text_3', 'offer_btn_text', 'offer_btn_url', 'review_heading', 'copyright_text',
             'nav_home_text', 'nav_home_url', 'nav_product_text', 'nav_product_url', 'nav_contact_text', 'nav_contact_url', 'nav_hotline_number',
-            'bkash_number', 'rocket_number', 'nagad_number'
+            'seo_title', 'seo_description', 'seo_keywords'
         ];
 
         foreach ($fillableText as $field) {
@@ -103,31 +104,6 @@ class ProductMarketingController extends Controller
             $marketing_detail->faqs = json_encode(array_values($faqs));
         }
 
-        // Handle Checkout Products (JSON with Images)
-        if ($request->has('checkout_products')) {
-            $checkoutProducts = $request->input('checkout_products');
-            $processedProducts = [];
-
-            foreach ($checkoutProducts as $index => $prodData) {
-                // Skip empty rows if needed, but let's assume valid rows if title/price exists
-                if (empty($prodData['title']) && empty($prodData['price'])) continue;
-
-                // Handle Image Upload
-                if ($request->hasFile("checkout_products.{$index}.image")) {
-                    $file = $request->file("checkout_products.{$index}.image");
-                    $path = file_upload($file, 'uploads/custom-images/');
-                    $prodData['image'] = $path;
-                } else {
-                    // Retain existing image
-                    $prodData['image'] = $prodData['existing_image'] ?? null;
-                }
-                unset($prodData['existing_image']); // Clean up auxiliary field
-
-                $processedProducts[] = $prodData;
-            }
-            $marketing_detail->checkout_products = json_encode($processedProducts);
-        }
-
         $marketing_detail->save();
 
         // Handle Status Fields
@@ -141,7 +117,7 @@ class ProductMarketingController extends Controller
         }
         $marketing_detail->save();
 
-        $notification = trans('Updated Successfully');
+        $notification = __('Updated Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
 
         return redirect()->back()->with($notification);
