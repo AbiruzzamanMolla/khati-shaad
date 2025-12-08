@@ -587,6 +587,10 @@ class Product extends Model
 
             $attribute_value_ids = $options->pluck('attribute_value_id')->toArray();
             $variant_images      = $options->pluck('attribute_image_url')->toArray();
+            $image = $options->filter(fn($opt) => in_array($opt->attribute->slug ?? '', ['color', 'colors']))
+                ->pluck('attribute_image_url')
+                ->filter()
+                ->first() ?? '';
 
             // Combine attribute_value_id => image
             $attribute_images = [];
@@ -595,6 +599,7 @@ class Product extends Model
             }
 
             $variantsPriceAndSku[$variant->id] = [
+                'name' => $variant->options->pluck('attributeValue.name')->implode(', '),
                 'price'                              => $variant->price,
                 'currency_price'                     => currency($variant->price),
                 'sku'                                => $variant->sku,
@@ -604,6 +609,7 @@ class Product extends Model
                 'stock'                              => optional($variant->manageStocks)->sum('quantity'),
                 'attribute_value_ids'                => $attribute_value_ids,
                 'attribute_images'                   => $attribute_images,
+                'image'                              => $image,
             ];
         }
 

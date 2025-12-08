@@ -1310,3 +1310,29 @@ function wishlistCount()
             });
         })->count() ?? 0;
 }
+
+
+function get_valid_image_url($url, $default)
+{
+    // 1. Check if it's empty or NOT a valid URL structure
+    if (empty($url) || !filter_var($url, FILTER_VALIDATE_URL)) {
+        return $default;
+    }
+
+    // 2. Parse the URL to get the path (ignoring query strings like ?t=123)
+    $path = parse_url($url, PHP_URL_PATH);
+
+    // 3. Extract the extension from the path
+    $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+
+    // 4. Define allowed image extensions
+    $allowed_extensions = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg', 'bmp', 'tiff'];
+
+    // 5. Check if the extension is in the allowed list
+    if (in_array($extension, $allowed_extensions)) {
+        return $url;
+    }
+
+    // 6. Return default if URL is valid but extension is not an image
+    return $default;
+}

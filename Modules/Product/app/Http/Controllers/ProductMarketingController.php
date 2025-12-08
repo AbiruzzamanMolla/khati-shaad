@@ -82,7 +82,7 @@ class ProductMarketingController extends Controller
             'section_four_heading', 'section_four_description', 'section_four_btn_text', 'section_four_btn_url',
             'faq_heading', 'offer_text_1', 'offer_old_price', 'offer_text_2', 'offer_current_price', 
             'offer_text_3', 'offer_btn_text', 'offer_btn_url', 'review_heading', 'checkout_heading', 'copyright_text',
-            'nav_home_text', 'nav_product_text', 'nav_contact_text', 'nav_hotline_number',
+            'nav_home_text', 'nav_home_url', 'nav_product_text', 'nav_product_url', 'nav_contact_text', 'nav_contact_url', 'nav_hotline_number',
             'bkash_number', 'rocket_number', 'nagad_number'
         ];
 
@@ -128,6 +128,17 @@ class ProductMarketingController extends Controller
             $marketing_detail->checkout_products = json_encode($processedProducts);
         }
 
+        $marketing_detail->save();
+
+        // Handle Status Fields
+        $statusFields = [
+            'banner_status', 'section_two_status', 'section_three_status', 
+            'section_four_status', 'faq_status', 'offer_status', 'review_status'
+        ];
+
+        foreach($statusFields as $field){
+            $marketing_detail->$field = $request->has($field) ? 1 : 0;
+        }
         $marketing_detail->save();
 
         $notification = trans('Updated Successfully');

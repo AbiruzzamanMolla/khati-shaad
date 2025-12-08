@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\Vendor;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
@@ -22,6 +23,7 @@ use Modules\Product\app\Models\AttributeValue;
 use Modules\Product\app\Models\Brand;
 use Modules\Product\app\Models\Category;
 use Modules\Product\app\Models\Product;
+use Modules\Product\app\Models\ProductMarketingDetails;
 use Modules\Testimonial\app\Models\Testimonial;
 
 class HomeController extends Controller
@@ -677,24 +679,7 @@ class HomeController extends Controller
 
         $product->increment('viewed');
 
-        $relatedProducts = Product::with(['labels', 'categories'])
-            ->where('id', '!=', $product->id)
-            ->where(function ($query) use ($product) {
-                $query->where('brand_id', $product->brand_id)
-                    ->orWhere('vendor_id', $product->vendor_id)
-                    ->orWhereHas('labels', function ($q) use ($product) {
-                        $q->whereIn('product_labels.id', $product->labels->pluck('id'));
-                    })
-                    ->orWhereHas('categories', function ($q) use ($product) {
-                        $q->whereIn('categories.id', $product->categories->pluck('id'));
-                    });
-            })
-            ->published()
-            ->latest()
-            ->limit(4)
-            ->get();
-
-        $sections = getSection('about_us_page', false);
+        $marketing = $product->marketingDetails;
 
         pushToGTM([
             'event'        => 'page_view',
@@ -719,7 +704,9 @@ class HomeController extends Controller
             'data'  => $pixelData,
         ]);
 
-        return view('website.product-marketing-details', compact('product', 'sections', 'relatedProducts'));
+        $countries = Country::all();
+
+        return view('website.product-marketing-details', compact('product', 'marketing', 'countries'));
     }
 
     /**

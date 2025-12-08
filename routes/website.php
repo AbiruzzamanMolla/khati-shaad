@@ -6,6 +6,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\GuestCheckoutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MarketingOrderProcessController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\WishlistController;
@@ -75,6 +76,8 @@ Route::middleware(['translation', 'maintenance.mode'])->group(
                 Route::post('/get-checkout-summary', 'getCheckoutSummary')->name('get.checkout.summary');
                 Route::post('/place-order', 'placeOrder')->name('place.order');
             });
+
+            Route::post('/place-marketing-order', [MarketingOrderProcessController::class, 'placeMarketingOrder'])->name('place.marketing.order');
 
             Route::group(['middleware' => 'auth'], function () {
                 Route::get('/compare', [CartController::class, 'compare'])->name('compare');

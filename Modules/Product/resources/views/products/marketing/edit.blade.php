@@ -39,7 +39,7 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>{{ __('Home Text') }}</label>
                                                                 <input class="form-control" name="nav_home_text"
@@ -47,7 +47,15 @@
                                                                     value="{{ $marketing_detail->nav_home_text ?? 'Home' }}">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>{{ __('Home URL') }}</label>
+                                                                <input class="form-control" name="nav_home_url"
+                                                                    type="text"
+                                                                    value="{{ $marketing_detail->nav_home_url ?? '#' }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>{{ __('Product Text') }}</label>
                                                                 <input class="form-control" name="nav_product_text"
@@ -55,7 +63,15 @@
                                                                     value="{{ $marketing_detail->nav_product_text ?? 'Product' }}">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>{{ __('Product URL') }}</label>
+                                                                <input class="form-control" name="nav_product_url"
+                                                                    type="text"
+                                                                    value="{{ $marketing_detail->nav_product_url ?? '#' }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>{{ __('Contact Text') }}</label>
                                                                 <input class="form-control" name="nav_contact_text"
@@ -63,7 +79,15 @@
                                                                     value="{{ $marketing_detail->nav_contact_text ?? 'Contact' }}">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>{{ __('Contact URL') }}</label>
+                                                                <input class="form-control" name="nav_contact_url"
+                                                                    type="text"
+                                                                    value="{{ $marketing_detail->nav_contact_url ?? '#' }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>{{ __('Hotline Number') }}</label>
                                                                 <input class="form-control" name="nav_hotline_number"
@@ -79,8 +103,15 @@
                                         {{-- Banner Section --}}
                                         <div class="col-12 mb-4">
                                             <div class="card border-primary">
-                                                <div class="card-header bg-primary text-white">
-                                                    <h4>{{ __('Banner Section') }}</h4>
+                                                <div class="card-header bg-primary d-flex justify-content-between">
+                                                    <h4 class="text-white">{{ __('Banner Section') }}</h4>
+                                                    <div class="card-header-action">
+                                                        <input id="banner_status" name="banner_status" data-toggle="toggle"
+                                                            data-onlabel="{{ __('Show') }}"
+                                                            data-offlabel="{{ __('Hide') }}" data-onstyle="success"
+                                                            data-offstyle="danger" type="checkbox"
+                                                            {{ $marketing_detail->banner_status ? 'checked' : '' }}>
+                                                    </div>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row">
@@ -142,8 +173,15 @@
                                         {{-- Section Two --}}
                                         <div class="col-12 mb-4">
                                             <div class="card border-info">
-                                                <div class="card-header bg-info text-white">
-                                                    <h4>{{ __('Section Two (Features)') }}</h4>
+                                                <div class="card-header bg-info">
+                                                    <h4 class="text-white">{{ __('Section Two (Features)') }}</h4>
+                                                    <div class="card-header-action">
+                                                        <input id="section_two_status" name="section_two_status"
+                                                            data-toggle="toggle" data-onlabel="{{ __('Show') }}"
+                                                            data-offlabel="{{ __('Hide') }}" data-onstyle="success"
+                                                            data-offstyle="danger" type="checkbox"
+                                                            {{ $marketing_detail->section_two_status ? 'checked' : '' }}>
+                                                    </div>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row">
@@ -198,8 +236,15 @@
                                         {{-- Section Three --}}
                                         <div class="col-12 mb-4">
                                             <div class="card border-warning">
-                                                <div class="card-header bg-warning text-white">
-                                                    <h4>{{ __('Section Three (Identification)') }}</h4>
+                                                <div class="card-header bg-warning">
+                                                    <h4 class="text-white">{{ __('Section Three (Identification)') }}</h4>
+                                                    <div class="card-header-action">
+                                                        <input id="section_three_status" name="section_three_status"
+                                                            data-toggle="toggle" data-onlabel="{{ __('Show') }}"
+                                                            data-offlabel="{{ __('Hide') }}" data-onstyle="success"
+                                                            data-offstyle="danger" type="checkbox"
+                                                            {{ $marketing_detail->section_three_status ? 'checked' : '' }}>
+                                                    </div>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row">
@@ -254,8 +299,15 @@
                                         {{-- Section Four --}}
                                         <div class="col-12 mb-4">
                                             <div class="card border-success">
-                                                <div class="card-header bg-success text-white">
-                                                    <h4>{{ __('Section Four (Why Choose Us)') }}</h4>
+                                                <div class="card-header bg-success">
+                                                    <h4 class="text-white">{{ __('Section Four (Why Choose Us)') }}</h4>
+                                                    <div class="card-header-action">
+                                                        <input id="section_four_status" name="section_four_status"
+                                                            data-toggle="toggle" data-onlabel="{{ __('Show') }}"
+                                                            data-offlabel="{{ __('Hide') }}" data-onstyle="primary"
+                                                            data-offstyle="danger" type="checkbox"
+                                                            {{ $marketing_detail->section_four_status ? 'checked' : '' }}>
+                                                    </div>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row">
@@ -310,19 +362,40 @@
                                         {{-- FAQ Section --}}
                                         <div class="col-12 mb-4">
                                             <div class="card">
-                                                <div class="card-header">
-                                                    <h4>{{ __('FAQ Section') }}</h4>
+                                                <div class="card-header bg-primary">
+                                                    <h4 class="text-white">{{ __('FAQ Section') }}</h4>
                                                     <div class="card-header-action">
-                                                        <button class="btn btn-success" id="add_faq_row"
+                                                        <button class="btn btn-success ml-2" id="add_faq_row"
                                                             type="button"><i class="fa fa-plus"></i>
                                                             {{ __('Add FAQ') }}</button>
                                                     </div>
                                                 </div>
                                                 <div class="card-body">
-                                                    <div class="form-group">
-                                                        <label>{{ __('FAQ Heading') }}</label>
-                                                        <input class="form-control" name="faq_heading" type="text"
-                                                            value="{{ $marketing_detail->faq_heading ?? '' }}">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="form-group">
+                                                                <label>{{ __('FAQ Heading') }}</label>
+                                                                <input class="form-control" name="faq_heading"
+                                                                    type="text"
+                                                                    value="{{ $marketing_detail->faq_heading ?? '' }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>{{ __('Status') }}</label>
+                                                                <div>
+
+
+                                                                    <input id="faq_status" name="faq_status"
+                                                                        data-toggle="toggle"
+                                                                        data-onlabel="{{ __('Show') }}"
+                                                                        data-offlabel="{{ __('Hide') }}"
+                                                                        data-onstyle="primary" data-offstyle="danger"
+                                                                        type="checkbox"
+                                                                        {{ $marketing_detail->faq_status ? 'checked' : '' }}>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div id="faq_items_container">
                                                         @if (isset($marketing_detail->faqs) && is_array($marketing_detail->faqs))
@@ -357,8 +430,15 @@
                                         {{-- Offer Section --}}
                                         <div class="col-12 mb-4">
                                             <div class="card border-primary">
-                                                <div class="card-header bg-primary text-white">
-                                                    <h4>{{ __('Offer Section') }}</h4>
+                                                <div class="card-header bg-primary ">
+                                                    <h4 class="text-white">{{ __('Offer Section') }}</h4>
+                                                    <div class="card-header-action">
+                                                        <input id="offer_status" name="offer_status" data-toggle="toggle"
+                                                            data-onlabel="{{ __('Show') }}"
+                                                            data-offlabel="{{ __('Hide') }}" data-onstyle="success"
+                                                            data-offstyle="danger" type="checkbox"
+                                                            {{ $marketing_detail->offer_status ? 'checked' : '' }}>
+                                                    </div>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row">
@@ -442,8 +522,15 @@
                                         {{-- Reviews Section --}}
                                         <div class="col-12 mb-4">
                                             <div class="card">
-                                                <div class="card-header">
-                                                    <h4>{{ __('Reviews Section') }}</h4>
+                                                <div class="card-header bg-primary">
+                                                    <h4 class="text-white">{{ __('Reviews Section') }}</h4>
+                                                    <div class="card-header-action">
+                                                        <input id="review_status" name="review_status" data-toggle="toggle"
+                                                            data-onlabel="{{ __('Show') }}"
+                                                            data-offlabel="{{ __('Hide') }}" data-onstyle="success"
+                                                            data-offstyle="danger" type="checkbox"
+                                                            {{ $marketing_detail->review_status ? 'checked' : '' }}>
+                                                    </div>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="form-group">
@@ -473,8 +560,8 @@
                                         {{-- Checkout/Footer Section --}}
                                         <div class="col-12 mb-4">
                                             <div class="card">
-                                                <div class="card-header">
-                                                    <h4>{{ __('Checkout & Footer') }}</h4>
+                                                <div class="card-header bg-primary">
+                                                    <h4 class="text-white">{{ __('Checkout & Footer') }}</h4>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="form-group">

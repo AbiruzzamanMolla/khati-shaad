@@ -48,15 +48,25 @@ class ProductMarketingDetails extends Model
         'review_heading',
         'review_images',
         'nav_home_text',
+        'nav_home_url',
         'nav_product_text',
+        'nav_product_url',
         'nav_contact_text',
+        'nav_contact_url',
         'nav_hotline_number',
         'checkout_products',
         'bkash_number',
         'rocket_number',
         'nagad_number',
         'checkout_heading',
-        'copyright_text'
+        'copyright_text',
+        'banner_status',
+        'section_two_status',
+        'section_three_status',
+        'section_four_status',
+        'faq_status',
+        'offer_status',
+        'review_status'
     ];
 
     protected $casts = [

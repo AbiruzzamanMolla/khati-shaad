@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('banner_phone')->nullable();
             $table->string('banner_bg_image')->nullable();
             $table->string('banner_image')->nullable();
-
+ 
             // Section Two (Reason to Buy)
             $table->boolean('section_two_status')->default(true);
             $table->string('section_two_heading')->nullable();
@@ -72,8 +72,11 @@ return new class extends Migration
 
             // Navbar Section
             $table->string('nav_home_text')->nullable()->default('Home');
+            $table->string('nav_home_url')->nullable()->default('#');
             $table->string('nav_product_text')->nullable()->default('Product');
+            $table->string('nav_product_url')->nullable()->default('#');
             $table->string('nav_contact_text')->nullable()->default('Contact');
+            $table->string('nav_contact_url')->nullable()->default('#');
             $table->string('nav_hotline_number')->nullable();
 
             // Footer / Checkout Misc
