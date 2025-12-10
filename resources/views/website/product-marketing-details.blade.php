@@ -448,7 +448,7 @@
                                                                         d="M12 4.5v15m7.5-7.5h-15" />
                                                                 </svg>
                                                             </span>
-                                                            <input type="text" placeholder="1">
+                                                            <input name="quantity" type="text" placeholder="1">
                                                             <span class="plus">
                                                                 <svg class="size-6" xmlns="http://www.w3.org/2000/svg"
                                                                     fill="none" viewBox="0 0 24 24"
@@ -465,23 +465,23 @@
                                         </ul>
                                         <div class="billing_orders_subtotal">
                                             <div class="subtotal">
-                                                <h5>Subtotal</h5>
+                                                <h5>মোট</h5>
                                                 <h6>2,380.00৳ </h6>
                                             </div>
                                             <div class="subtotal">
-                                                <h5>Shipping</h5>
+                                                <h5>শিপিং চার্জ</h5>
                                                 <div class="charge">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" id="flexRadioDefaultt5"
-                                                            name="flexRadioDefaultt" type="radio" checked="">
-                                                        <label class="form-check-label" for="flexRadioDefaultt5">
+                                                        <input class="form-check-input" id="shipping_charge1"
+                                                            name="shipping_charge" type="radio" value="1">
+                                                        <label class="form-check-label" for="shipping_charge1">
                                                             ঢাকার ভিতরে ডেলিভারি চার্জ: 60.00৳
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" id="flexRadioDefaultt6"
-                                                            name="flexRadioDefaultt" type="radio">
-                                                        <label class="form-check-label" for="flexRadioDefaultt6">
+                                                        <input class="form-check-input" id="shipping_charge2"
+                                                            name="shipping_charge" type="radio" value="2">
+                                                        <label class="form-check-label" for="shipping_charge2">
                                                             ঢাকার বাইরে ডেলিভারি চার্জ: 120.00৳
                                                         </label>
                                                     </div>
@@ -489,7 +489,7 @@
                                             </div>
                                         </div>
                                         <div class="billing_orders_total">
-                                            <h5>Total</h5>
+                                            <h5>সর্বমোট</h5>
                                             <h6>2,440.00৳</h6>
                                         </div>
                                         <div class="product_payment">
