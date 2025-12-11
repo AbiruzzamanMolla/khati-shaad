@@ -21,8 +21,16 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header d-flex justify-content-between">
                                 <h4>{{ __('Edit Marketing Details') }}</h4>
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <input type="text" id="" class="form-control"
+                                            value="{{ route('website.product.marketing-details', $product->slug) }}">
+                                        <a class="btn btn-primary m-1"
+                                            href="{{ route('website.product.marketing-details', $product->slug) }}">{{ __('Visit') }}</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <form action="{{ route('admin.product.marketing-details.store', $product->id) }}"
@@ -118,7 +126,8 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>{{ __('SEO Keywords') }}</label>
-                                                                <input class="form-control" name="seo_keywords" type="text"
+                                                                <input class="form-control" name="seo_keywords"
+                                                                    type="text"
                                                                     value="{{ $marketing_detail->seo_keywords ?? '' }}">
                                                             </div>
                                                         </div>
@@ -131,7 +140,8 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>{{ __('SEO Image') }}</label>
-                                                                <input class="form-control" name="seo_image" type="file">
+                                                                <input class="form-control" name="seo_image"
+                                                                    type="file">
                                                                 @if ($marketing_detail->seo_image)
                                                                     <div class="mt-2">
                                                                         <img src="{{ asset($marketing_detail->seo_image) }}"
@@ -151,8 +161,8 @@
                                                 <div class="card-header bg-primary d-flex justify-content-between">
                                                     <h4 class="text-white">{{ __('Banner Section') }}</h4>
                                                     <div class="card-header-action">
-                                                        <input id="banner_status" name="banner_status" data-toggle="toggle"
-                                                            data-onlabel="{{ __('Show') }}"
+                                                        <input id="banner_status" name="banner_status"
+                                                            data-toggle="toggle" data-onlabel="{{ __('Show') }}"
                                                             data-offlabel="{{ __('Hide') }}" data-onstyle="success"
                                                             data-offstyle="danger" type="checkbox"
                                                             {{ $marketing_detail->banner_status ? 'checked' : '' }}>
@@ -570,8 +580,8 @@
                                                 <div class="card-header bg-primary">
                                                     <h4 class="text-white">{{ __('Reviews Section') }}</h4>
                                                     <div class="card-header-action">
-                                                        <input id="review_status" name="review_status" data-toggle="toggle"
-                                                            data-onlabel="{{ __('Show') }}"
+                                                        <input id="review_status" name="review_status"
+                                                            data-toggle="toggle" data-onlabel="{{ __('Show') }}"
                                                             data-offlabel="{{ __('Hide') }}" data-onstyle="success"
                                                             data-offstyle="danger" type="checkbox"
                                                             {{ $marketing_detail->review_status ? 'checked' : '' }}>

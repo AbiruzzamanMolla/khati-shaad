@@ -1243,8 +1243,8 @@ $(function () {
         if ($button.hasClass('details_buy_btn')) {
             isBuyNow = true;
             // redirect to marketing details page
-            window.location.href = $button.attr('href');
-            return;
+            // window.location.href = $button.attr('href');
+            // return;
         }
 
         if (HAS_APP == 1 && AUTH_STATUS != 1) {

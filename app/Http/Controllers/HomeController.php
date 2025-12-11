@@ -24,6 +24,8 @@ use Modules\Product\app\Models\Brand;
 use Modules\Product\app\Models\Category;
 use Modules\Product\app\Models\Product;
 use Modules\Product\app\Models\ProductMarketingDetails;
+use Modules\Shipping\app\Models\ShippingRule;
+use Modules\Shipping\app\Models\ShippingSetting;
 use Modules\Testimonial\app\Models\Testimonial;
 
 class HomeController extends Controller
@@ -235,7 +237,7 @@ class HomeController extends Controller
                     $query->where('is_featured', 1);
                 },
             ])
-        // ->having('featured_total', '>=', 4)
+            // ->having('featured_total', '>=', 4)
             ->orderByDesc('featured_total')
             ->with([
                 'products' => function ($query) use ($featureProductLimit) {
@@ -643,71 +645,7 @@ class HomeController extends Controller
     }
 
 
-    public function productMarketingDetails($slug)
-    {
-        $product = Product::with([
-            'marketingDetails',
-            'variants',
-            'variantImage' => [
-                'attribute',
-                'attributeValue',
-            ],
-            'categories'   => function ($q) {
-                $q->with('translation');
-            },
-            'brand'        => function ($q) {
-                $q->with('translation');
-            },
-            'translation',
-            'vendor'       => function ($q) {
-                $q->withCount('reviews')->withAvg('reviews', 'rating');
-            },
-            'variants'     => [
-                'options' => [
-                    'attribute',
-                    'attributeValue.translation',
-                ],
-            ],
-            'reviews'      => function ($q) {
-                $q->where('status', 1)
-                    ->with('user')
-                    ->latest()
-                    ->take(10);
-            },
-        ])
-            ->where('slug', $slug)->published()->firstOrFail();
 
-        $product->increment('viewed');
-
-        $marketing = $product->marketingDetails;
-
-        pushToGTM([
-            'event'        => 'page_view',
-            'page_type'    => 'product_detail',
-            'product_id'   => $product->id,
-            'product_name' => $product->name,
-            'user_id'      => auth()->id() ?? 0,
-            'user_role'    => auth()->check() ? auth()->user()->name : 'guest',
-            'language'     => getSessionLanguage(),
-        ]);
-
-        $pixelData = [
-            'content_ids'  => [$product->id],
-            'content_name' => $product->name,
-            'content_type' => 'product',
-            'value'        => (float) $product->price,
-            'currency'     => 'USD',
-        ];
-
-        session()->flash('pixel_payload', [
-            'event' => 'ViewContent',
-            'data'  => $pixelData,
-        ]);
-
-        $countries = Country::all();
-
-        return view('website.product-marketing-details', compact('product', 'marketing', 'countries'));
-    }
 
     /**
      * @param Request $request

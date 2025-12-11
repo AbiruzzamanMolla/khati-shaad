@@ -24,7 +24,7 @@ Route::middleware(['translation', 'maintenance.mode'])->group(
             Route::get('/categories', 'categories')->name('categories');
             Route::get('/products', 'products')->name('products');
             Route::get('/products/{product:slug}', 'product')->name('product');
-            Route::get('/products-details/{product:slug}', 'productMarketingDetails')->name('product.marketing-details');
+            Route::get('/products-details/{product:slug}', [MarketingOrderProcessController::class, 'productMarketingDetails'])->name('product.marketing-details');
             Route::get('/product-modal', 'productModal')->name('product-modal');
             Route::get('/flash-deals', 'flashDeals')->name('flash.deals');
             Route::get('/brands', 'brands')->name('brands');
@@ -78,6 +78,7 @@ Route::middleware(['translation', 'maintenance.mode'])->group(
             });
 
             Route::post('/place-marketing-order', [MarketingOrderProcessController::class, 'placeMarketingOrder'])->name('place.marketing.order');
+            Route::get('/get-marketing-price', [MarketingOrderProcessController::class, 'getMarketingPrice'])->name('get.marketing.price');
 
             Route::group(['middleware' => 'auth'], function () {
                 Route::get('/compare', [CartController::class, 'compare'])->name('compare');

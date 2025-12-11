@@ -220,10 +220,10 @@
                             </form>
 
                             <div class="wsus__modal_filter mt_20">
-                                <a href="{{ route('website.product.marketing-details', $product->slug) }}" class="details_buy_btn add_cart ml_0" data-product-id="{{ $product->id }}"
+                                <button class="details_buy_btn add_cart ml_0" data-product-id="{{ $product->id }}"
                                     type="button">
                                     {{ __('Buy Now') }}
-                                </a>
+                                </button>
                                 <button class="add_cart" data-product-id="{{ $product->id }}"
                                     form="add_to_cart_form_p{{ $product->id }}" type="button">
                                     {{ __('Add To Cart') }}

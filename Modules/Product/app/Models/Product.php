@@ -610,6 +610,7 @@ class Product extends Model
                 'attribute_value_ids'                => $attribute_value_ids,
                 'attribute_images'                   => $attribute_images,
                 'image'                              => $image,
+                'is_default'                         => $variant->is_default,
             ];
         }
 
