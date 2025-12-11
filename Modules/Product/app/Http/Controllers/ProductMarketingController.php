@@ -39,19 +39,19 @@ class ProductMarketingController extends Controller
             'seo_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
 
             // URL Validation
-            'section_two_btn_url' => 'nullable|url',
-            'section_three_btn_url' => 'nullable|url',
-            'section_four_btn_url' => 'nullable|url',
-            'offer_btn_url' => 'nullable|url',
-            'nav_home_url' => 'nullable|string',
-            'nav_product_url' => 'nullable|string',
-            'nav_contact_url' => 'nullable|string',
+            'section_two_btn_url' => 'nullable|string|max:255',
+            'section_three_btn_url' => 'nullable|string|max:255',
+            'section_four_btn_url' => 'nullable|string|max:255',
+            'offer_btn_url' => 'nullable|string|max:255',
+            'nav_home_url' => 'nullable|string|max:255',
+            'nav_product_url' => 'nullable|string|max:255',
+            'nav_contact_url' => 'nullable|string|max:255',
 
             // Text Validation
             'banner_title' => 'nullable|string|max:255',
             'banner_phone_title' => 'nullable|string|max:255',
             'banner_phone' => 'nullable|string|max:20',
-            
+
             'section_two_heading' => 'nullable|string|max:255',
             'section_two_btn_text' => 'nullable|string|max:50',
             'section_two_description' => 'nullable|string',
@@ -88,18 +88,6 @@ class ProductMarketingController extends Controller
             'seo_title' => 'nullable|string|max:255',
             'seo_description' => 'nullable|string',
             'seo_keywords' => 'nullable|string',
-
-            // Payment Numbers
-            'bkash_number' => 'nullable|string|max:20',
-            'rocket_number' => 'nullable|string|max:20',
-            'nagad_number' => 'nullable|string|max:20',
-            
-            // Checkout Products Validation
-            'checkout_products' => 'nullable|array',
-            'checkout_products.*.title' => 'nullable|string|max:255',
-            'checkout_products.*.price' => 'nullable|string|max:20',
-            'checkout_products.*.description' => 'nullable|string',
-            'checkout_products.*.image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ], [
             'image' => __('The uploaded file must be an image.'),
             'mimes' => __('The image must be a file of type: jpeg, png, jpg, webp.'),
@@ -120,8 +108,13 @@ class ProductMarketingController extends Controller
 
         // Handle File Uploads
         $fileFields = [
-            'banner_image', 'banner_bg_image', 'section_two_image', 
-            'section_three_bg_image', 'section_four_image', 'offer_bg_image', 'seo_image'
+            'banner_image',
+            'banner_bg_image',
+            'section_two_image',
+            'section_three_bg_image',
+            'section_four_image',
+            'offer_bg_image',
+            'seo_image'
         ];
 
         foreach ($fileFields as $field) {
@@ -134,39 +127,66 @@ class ProductMarketingController extends Controller
 
         // Handle Review Images (Multiple)
         if ($request->hasFile('review_images')) {
-             $reviewImages = [];
-             
-             $existingImages = json_decode($marketing_detail->review_images, true) ?? [];
-             
-             foreach ($request->file('review_images') as $file) {
+            $reviewImages = [];
+
+            $existingImages = json_decode($marketing_detail->review_images, true) ?? [];
+
+            foreach ($request->file('review_images') as $file) {
                 $path = file_upload($file, 'uploads/custom-images/');
                 $existingImages[] = $path;
-             }
-             $marketing_detail->review_images = json_encode($existingImages);
+            }
+            $marketing_detail->review_images = json_encode($existingImages);
         }
 
         // Handle Text Fields
         $fillableText = [
-            'banner_title', 'banner_phone_title', 'banner_phone',
-            'section_two_heading', 'section_two_description', 'section_two_btn_text', 'section_two_btn_url',
-            'section_three_heading', 'section_three_description', 'section_three_btn_text', 'section_three_btn_url',
-            'section_four_heading', 'section_four_description', 'section_four_btn_text', 'section_four_btn_url',
-            'faq_heading', 'offer_text_1', 'offer_old_price', 'offer_text_2', 'offer_current_price', 
-            'offer_text_3', 'offer_btn_text', 'offer_btn_url', 'review_heading', 'copyright_text',
-            'nav_home_text', 'nav_home_url', 'nav_product_text', 'nav_product_url', 'nav_contact_text', 'nav_contact_url', 'nav_hotline_number',
-            'seo_title', 'seo_description', 'seo_keywords'
+            'banner_title',
+            'banner_phone_title',
+            'banner_phone',
+            'section_two_heading',
+            'section_two_description',
+            'section_two_btn_text',
+            'section_two_btn_url',
+            'section_three_heading',
+            'section_three_description',
+            'section_three_btn_text',
+            'section_three_btn_url',
+            'section_four_heading',
+            'section_four_description',
+            'section_four_btn_text',
+            'section_four_btn_url',
+            'faq_heading',
+            'offer_text_1',
+            'offer_old_price',
+            'offer_text_2',
+            'offer_current_price',
+            'offer_text_3',
+            'offer_btn_text',
+            'offer_btn_url',
+            'review_heading',
+            'copyright_text',
+            'nav_home_text',
+            'nav_home_url',
+            'nav_product_text',
+            'nav_product_url',
+            'nav_contact_text',
+            'nav_contact_url',
+            'nav_hotline_number',
+            'seo_title',
+            'seo_description',
+            'seo_keywords'
         ];
 
         foreach ($fillableText as $field) {
-             if($request->has($field)){
-                 $marketing_detail->$field = $request->input($field);
-             }
+            if ($request->has($field)) {
+                $marketing_detail->$field = $request->input($field);
+            }
         }
 
         // Handle FAQs (JSON)
         if ($request->has('faqs')) {
             $faqs = $request->input('faqs');
-            $faqs = array_filter($faqs, function($faq){
+            $faqs = array_filter($faqs, function ($faq) {
                 return !empty($faq['question']) || !empty($faq['answer']);
             });
             $marketing_detail->faqs = json_encode(array_values($faqs));
@@ -175,11 +195,16 @@ class ProductMarketingController extends Controller
         $marketing_detail->save();
 
         $statusFields = [
-            'banner_status', 'section_two_status', 'section_three_status', 
-            'section_four_status', 'faq_status', 'offer_status', 'review_status'
+            'banner_status',
+            'section_two_status',
+            'section_three_status',
+            'section_four_status',
+            'faq_status',
+            'offer_status',
+            'review_status'
         ];
 
-        foreach($statusFields as $field){
+        foreach ($statusFields as $field) {
             $marketing_detail->$field = $request->has($field) ? 1 : 0;
         }
         $marketing_detail->save();

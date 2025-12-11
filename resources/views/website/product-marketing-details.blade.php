@@ -165,33 +165,41 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav m-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active"
-                            href="{{ $marketing->nav_home_url ? url($marketing->nav_home_url) : route('website.home') }}"
-                            aria-current="page">{{ $marketing->nav_home_text }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                            href="{{ $marketing->nav_service_url ? url($marketing->nav_product_url) : route('website.products') }}">{{ $marketing->nav_product_text }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                            href="{{ $marketing->nav_contact_url ? url($marketing->nav_contact_url) : route('website.contact.us') }}">{{ $marketing->nav_contact_text }}</a>
-                    </li>
+                    @if ($marketing->nav_home_text)
+                        <li class="nav-item">
+                            <a class="nav-link active"
+                                href="{{ $marketing->nav_home_url ? url($marketing->nav_home_url) : route('website.home') }}"
+                                aria-current="page">{{ $marketing->nav_home_text }}</a>
+                        </li>
+                    @endif
+                    @if ($marketing->nav_product_text)
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="{{ $marketing->nav_service_url ? url($marketing->nav_product_url) : route('website.products') }}">{{ $marketing->nav_product_text }}</a>
+                        </li>
+                    @endif
+                    @if ($marketing->nav_contact_text)
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="{{ $marketing->nav_contact_url ? url($marketing->nav_contact_url) : route('website.contact.us') }}">{{ $marketing->nav_contact_text }}</a>
+                        </li>
+                    @endif
                 </ul>
                 <ul class="right_menu">
-                    <li>
-                        <span class="call_icon">
-                            <svg class="size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15.75 3.75 18 6m0 0 2.25 2.25M18 6l2.25-2.25M18 6l-2.25 2.25m1.5 13.5c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 0 1 4.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 0 0-.38 1.21 12.035 12.035 0 0 0 7.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 0 1 1.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 0 1-2.25 2.25h-2.25Z" />
-                            </svg>
-                        </span>
-                        <h5>{{ $marketing->nav_hotline_title }}</h5>
-                        <a
-                            href="callto:{{ $marketing->nav_hotline_number }}">{{ $marketing->nav_hotline_number }}</a>
-                    </li>
+                    @if ($marketing->nav_hotline_numbe)
+                        <li>
+                            <span class="call_icon">
+                                <svg class="size-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15.75 3.75 18 6m0 0 2.25 2.25M18 6l2.25-2.25M18 6l-2.25 2.25m1.5 13.5c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 0 1 4.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 0 0-.38 1.21 12.035 12.035 0 0 0 7.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 0 1 1.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 0 1-2.25 2.25h-2.25Z" />
+                                </svg>
+                            </span>
+                            <h5>{{ __('Hotline') }}</h5>
+                            <a
+                                href="callto:{{ $marketing->nav_hotline_number }}">{{ $marketing->nav_hotline_number }}</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -314,8 +322,10 @@
                         <div class="grocery_faq_area">
                             <div class="accordion accordion-flush grocery_faq_text" id="accordionFlushExample">
                                 @if (isset($marketing->faqs) && !empty($marketing->faqs))
-
-                                    @foreach ($marketing->faqs as $index => $faq)
+                                    @php
+                                        $faqs = is_array($marketing->faqs) ? $marketing->faqs : json_decode($marketing->faqs, true);
+                                    @endphp
+                                    @foreach ($faqs as $index => $faq)
                                         @if ($faq['question'] ?? false)
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header">

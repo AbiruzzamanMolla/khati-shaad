@@ -36,7 +36,6 @@
                                 <form action="{{ route('admin.product.marketing-details.store', $product->id) }}"
                                     method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    @method('PUT')
 
                                     <div class="row">
                                         {{-- Navbar Section --}}
@@ -439,8 +438,6 @@
                                                             <div class="form-group">
                                                                 <label>{{ __('Status') }}</label>
                                                                 <div>
-
-
                                                                     <input id="faq_status" name="faq_status"
                                                                         data-toggle="toggle"
                                                                         data-onlabel="{{ __('Show') }}"
@@ -453,8 +450,13 @@
                                                         </div>
                                                     </div>
                                                     <div id="faq_items_container">
-                                                        @if (isset($marketing_detail->faqs) && is_array($marketing_detail->faqs))
-                                                            @foreach ($marketing_detail->faqs as $index => $faq)
+                                                        @if (isset($marketing_detail->faqs))
+                                                            @php
+                                                                $faqs = is_array($marketing_detail->faqs)
+                                                                    ? $marketing_detail->faqs
+                                                                    : json_decode($marketing_detail->faqs, true);
+                                                            @endphp
+                                                            @foreach ($faqs as $index => $faq)
                                                                 <div class="row border p-3 mb-2"
                                                                     id="faq_row_{{ $index }}">
                                                                     <div class="col-md-5">
