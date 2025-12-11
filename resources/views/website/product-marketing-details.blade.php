@@ -323,9 +323,11 @@
                             <div class="accordion accordion-flush grocery_faq_text" id="accordionFlushExample">
                                 @if (isset($marketing->faqs) && !empty($marketing->faqs))
                                     @php
-                                        $faqs = is_array($marketing->faqs) ? $marketing->faqs : json_decode($marketing->faqs, true);
+                                        $faqs = is_array($marketing->faqs)
+                                            ? $marketing->faqs
+                                            : json_decode($marketing->faqs, true);
                                     @endphp
-                                    @foreach ($faqs as $index => $faq)
+                                    @foreach ($faqs ?? [] as $index => $faq)
                                         @if ($faq['question'] ?? false)
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header">

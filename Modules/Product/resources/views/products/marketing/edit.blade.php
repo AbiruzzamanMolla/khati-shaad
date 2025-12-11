@@ -456,7 +456,7 @@
                                                                     ? $marketing_detail->faqs
                                                                     : json_decode($marketing_detail->faqs, true);
                                                             @endphp
-                                                            @foreach ($faqs as $index => $faq)
+                                                            @foreach ($faqs ?? [] as $index => $faq)
                                                                 <div class="row border p-3 mb-2"
                                                                     id="faq_row_{{ $index }}">
                                                                     <div class="col-md-5">
